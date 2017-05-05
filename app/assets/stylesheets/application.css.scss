@@ -1,0 +1,25 @@
+@import "materialize";
+@import url('https://fonts.googleapis.com/css?family=Catamaran:500');
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+$vGrey: #61646f;
+$vDarkBlue: #2887db;
+$vLightBlue: #24adfc;
+
+html {
+	height: 100%;
+}
+body {
+	font-family: 'Catamaran', sans-serif;
+	 display: flex;
+     min-height: 100vh;
+     flex-direction: column;
+     background-color: white;
+     height: 100%;
+}
+@import "home.scss";
+@import "costs.scss";

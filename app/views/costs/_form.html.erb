@@ -1,0 +1,58 @@
+
+<div class="card">
+<%= form_with(model: cost, local: true) do |form| %>
+   <div class="card-content white-text">
+      <span class="card-title">New Expense</span>
+  <% if cost.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cost.errors.count, "error") %> prohibited this cost from being saved:</h2>
+
+      <ul>
+      <% cost.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :submitter %>
+    <%= form.text_field :submitter, id: :cost_submitter %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expense_date %>
+    <%= form.text_field :expense_date, id: :cost_expense_date, :class => "datepicker" %>
+  </div>
+
+  <div class="field">
+    <div class="row">
+      <div class="col m12"><label>Coding</label></div>
+  
+    <div class="col m4 s12">
+      <%= select_tag "cost[level1_id]", options_from_collection_for_select(@level1s, :id, :name, @level1id), prompt: 'Select' %>
+    </div>
+    <div class="col m4 s12">
+      <%= select_tag "cost[level2_id]", options_from_collection_for_select(@level2s, :id, :name, @level2id), prompt: 'Select' %>
+    </div>
+    <div class="col m4 s12">
+      <%= select_tag "cost[level3_id]", options_from_collection_for_select(@level3s, :id, :name, @level3id), prompt: 'Select' %>
+    </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount, id: :cost_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_field :comments, id: :cost_comments %>
+  </div>
+  </div>
+  <div class="card-action">
+    <%= form.submit %>
+  </div>
+<% end %>
+</div>

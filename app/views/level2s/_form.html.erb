@@ -1,0 +1,26 @@
+<%= form_with(model: level2, local: true) do |form| %>
+  <% if level2.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(level2.errors.count, "error") %> prohibited this level2 from being saved:</h2>
+
+      <ul>
+      <% level2.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :level2_name %>
+  </div>
+    <div class="field">
+    <%= form.label :level1_id %>
+    <%= form.text_field :level1_id, id: :level2_level1_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

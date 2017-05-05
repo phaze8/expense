@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @level3.name %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @level3.code %>
+</p>
+
+<p>
+  <strong>Level2:</strong>
+  <%= @level3.level2_id %>
+</p>
+
+<%= link_to 'Edit', edit_level3_path(@level3) %> |
+<%= link_to 'Back', level3s_path %>

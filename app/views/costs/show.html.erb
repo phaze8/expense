@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Submitter:</strong>
+  <%= @cost.submitter %>
+</p>
+
+<p>
+  <strong>Expense date:</strong>
+  <%= @cost.expense_date %>
+</p>
+
+<p>
+  <strong>Level1:</strong>
+  <%= @cost.level1_id %>
+</p>
+
+<p>
+  <strong>Level2:</strong>
+  <%= @cost.level2_id %>
+</p>
+
+<p>
+  <strong>Level3:</strong>
+  <%= @cost.level3_id %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @cost.amount %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @cost.comments %>
+</p>
+
+<%= link_to 'Edit', edit_cost_path(@cost) %> |
+<%= link_to 'Back', costs_path %>
