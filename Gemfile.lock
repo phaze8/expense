@@ -68,8 +68,8 @@ GEM
     erubi (1.6.0)
     execjs (2.7.0)
     ffi (1.9.18)
-    font-awesome-sass (4.7.0)
-      sass (>= 3.2)
+    font-awesome-rails (4.7.0.2)
+      railties (>= 3.2, < 5.2)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.1)
@@ -97,6 +97,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_magick (4.7.0)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
@@ -191,12 +192,13 @@ DEPENDENCIES
   capybara (~> 2.13.0)
   carrierwave
   coffee-rails (~> 4.2)
-  font-awesome-sass (~> 4.7.0)
+  font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
   jquery-turbolinks
   listen (>= 3.0.5, < 3.2)
   materialize-sass
+  mini_magick
   pg (~> 0.18)
   puma (~> 3.7)
   rails (~> 5.1.0)

@@ -22,10 +22,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'materialize-sass'
 gem 'jquery-turbolinks'
-gem 'font-awesome-sass', '~> 4.7.0'
+gem 'font-awesome-rails'
 # For Picture upload
 gem 'carrierwave'
-gem 'rmagick'
+gem 'mini_magick'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

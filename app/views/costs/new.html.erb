@@ -1,7 +1,13 @@
 <div class="container">
 	<div class="row">
+		<h3>New Expense</h3>
 		<%= render 'form', cost: @cost %>
 	</div>
+	<hr>
 	<div class="row">
+	<% if !@costs.nil? %>
+		<h5>Entered Expenses</h5>
+		<%= render 'list', flag: 0 %>
+	<% end %>
 	</div>
 </div>

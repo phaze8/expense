@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>id</th>
       <th>Name</th>
       <th>Code</th>
       <th>Level2</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @level3s.each do |level3| %>
       <tr>
+        <td><%= level3.id %></td>
         <td><%= level3.name %></td>
         <td><%= level3.code %></td>
         <td><%= level3.level2_id %></td>

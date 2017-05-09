@@ -1,8 +1,8 @@
 
-<div class="card">
-<%= form_with(model: cost, local: true) do |form| %>
-   <div class="card-content white-text">
-      <span class="card-title">New Expense</span>
+<div class="card grey lighten-2">
+<%= form_with(model: cost, local: true, :html => {:multipart => true}) do |form| %>
+   <div class="card-content ">
+
   <% if cost.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(cost.errors.count, "error") %> prohibited this cost from being saved:</h2>
@@ -29,30 +29,71 @@
     <div class="row">
       <div class="col m12"><label>Coding</label></div>
   
-    <div class="col m4 s12">
-      <%= select_tag "cost[level1_id]", options_from_collection_for_select(@level1s, :id, :name, @level1id), prompt: 'Select' %>
-    </div>
-    <div class="col m4 s12">
-      <%= select_tag "cost[level2_id]", options_from_collection_for_select(@level2s, :id, :name, @level2id), prompt: 'Select' %>
-    </div>
-    <div class="col m4 s12">
-      <%= select_tag "cost[level3_id]", options_from_collection_for_select(@level3s, :id, :name, @level3id), prompt: 'Select' %>
-    </div>
+      <div class="col m4 s12">
+        <%= select_tag "cost[level1_id]", options_from_collection_for_select(@level1s, :id, :name, cost.level1.id), prompt: 'Select' %>
+      </div>
+      <div class="col m4 s12">
+        <%= select_tag "cost[level2_id]", options_from_collection_for_select(@level2s, :id, :name, cost.level2.id), prompt: 'Select' %>
+      </div>
+      <div class="col m4 s12">
+        <% if !cost.level3.nil? %>
+          <%= select_tag "cost[level3_id]", options_from_collection_for_select(@level3s, :id, :name, cost.level3.id), prompt: 'Select', class: 'level3' %>
+        <% else %>
+          <%= select_tag "cost[level3_id]", options_from_collection_for_select(@level3s, :id, :name), prompt: 'Select', class: 'level3' %>
+        <% end %>
+          </div>
     </div>
   </div>
+  <div class="field hide m_and_e">
+    <div class="row">
+      <div class="switch col m3 s6">
+        <label>Offsite <%= form.check_box :onsite %>
+        <span class="lever"></span>
+          Onsite
+        </label>
+      </div>
+      <div class="col m3 s6 field">
+        <%= form.label :number_of_people, 'Number of People' %>
+        <%= form.number_field :number_of_people, id: :cost_number_of_people %>        
+      </div>
+      <div class="col m6 s12 field">
+        <%= form.label :people_names, 'Names/Companies' %>
+        <%= form.text_field :people_names, id: :cost_people_names %>        
+      </div>      
+    </div>
+  </div>
+ 
 
   <div class="field">
-    <%= form.label :amount %>
-    <%= form.text_field :amount, id: :cost_amount %>
+    <div class="row">
+      <div class="col m6 s12">
+        <%= form.label :amount %>
+        <%= form.text_field :amount, id: :cost_amount %>
+      </div>
+      <div class="col m6 s12">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Receipt</span>
+              <input type="file" name="cost[image]" > 
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" >
+          </div>
+        </div>
+        <%= image_tag cost.image_url(:thumb) if cost.image? %>
+      </div>
+    </div>
   </div>
 
   <div class="field">
     <%= form.label :comments %>
     <%= form.text_field :comments, id: :cost_comments %>
   </div>
+
   </div>
   <div class="card-action">
-    <%= form.submit %>
+    <%= form.submit 'Submit', class: "waves-effect waves-light btn-large" %>
   </div>
 <% end %>
 </div>
+

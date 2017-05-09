@@ -1,0 +1,16 @@
+<%= form_with(model: person, local: true) do |form| %>
+<div class="collection-item row">
+  <div class="field col s5">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :person_name %>
+  </div>
+  <div class="field col s5">
+    <%= form.label :company %>
+    <%= form.text_field :company, id: :person_company %>
+  </div>
+  <div class="col s2 secondary-content">
+     <%= link_to fa_icon("trash"), cost, method: :delete, data: { confirm: 'Are you sure?' }  %>
+  </div>
+
+</div>
+<% end %>

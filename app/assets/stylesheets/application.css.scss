@@ -3,7 +3,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-@import "font-awesome-sprockets";
+
 @import "font-awesome";
 
 $vGrey: #61646f;
@@ -20,6 +20,15 @@ body {
      flex-direction: column;
      background-color: white;
      height: 100%;
+
+
+
+}
+main {
+	height: 100%;
+}
+header {
+
 }
 @import "home.scss";
 @import "costs.scss";

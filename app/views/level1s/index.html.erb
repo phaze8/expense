@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>id</th>
       <th>Name</th>
       <th colspan="3"></th>
     </tr>
@@ -13,6 +14,7 @@
   <tbody>
     <% @level1s.each do |level1| %>
       <tr>
+        <td><%= level1.id %></td>
         <td><%= level1.name %></td>
         <td><%= link_to 'Show', level1 %></td>
         <td><%= link_to 'Edit', edit_level1_path(level1) %></td>

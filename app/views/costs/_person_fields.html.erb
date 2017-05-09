@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="field col s5">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :person_name %>
+  </div>
+  <div class="field col s5">
+    <%= form.label :company %>
+    <%= form.text_field :company, id: :person_company %>
+  </div>
+  <div class="col s2">
+    <%= form.check_box :_destroy %>
+  </div>
+
+</div>

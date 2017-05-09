@@ -1,6 +1,6 @@
 class CostsController < ApplicationController
   before_action :set_cost, only: [:show, :edit, :update, :destroy]
-
+  include CostsHelper
   # GET /costs
   # GET /costs.json
   def index
@@ -15,16 +15,24 @@ class CostsController < ApplicationController
   # GET /costs/new
   def new
     @cost = Cost.new
+    @cost.submitter = cookies[:submitter]
+    @cost.level1_id = Level1.where('name = ?', "G&A").first.id
+    @cost.level2_id = Level2.where('name = ?', "Expense").first.id
     @level1s = Level1.all.order(:name)
     @level2s = Level2.all.order(:name)
     @level3s = Level3.all.order(:name)
-    @level1id = 1
-    @level2id = 1
-    @level3id = 0
+      t = Time.now
+      puts t
+      @costs = Cost.where("submitter = ? and cast(created_at as date) = cast(now() as date)", cookies[:submitter]).order('expense_date desc')
+      puts @costs
+
   end
 
   # GET /costs/1/edit
   def edit
+    @level1s = Level1.all.order(:name)
+    @level2s = Level2.all.order(:name)
+    @level3s = Level3.all.order(:name)
   end
 
   # POST /costs
@@ -32,9 +40,11 @@ class CostsController < ApplicationController
   def create
     @cost = Cost.new(cost_params)
 
+    cookies.permanent[:submitter] = cost_params[:submitter]
     respond_to do |format|
       if @cost.save
-        format.html { redirect_to @cost, notice: 'Cost was successfully created.' }
+
+        format.html { redirect_to new_cost_url, notice: 'Expense was successfully added.' }
         format.json { render :show, status: :created, location: @cost }
       else
         format.html { render :new }
@@ -62,7 +72,7 @@ class CostsController < ApplicationController
   def destroy
     @cost.destroy
     respond_to do |format|
-      format.html { redirect_to costs_url, notice: 'Cost was successfully destroyed.' }
+      format.html { direct_to new_cost_url, notice: 'Cost was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -75,6 +85,6 @@ class CostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cost_params
-      params.require(:cost).permit(:submitter, :expense_date, :level1_id, :level2_id, :level3_id, :amount, :comments)
+      params.require(:cost).permit(:submitter, :expense_date, :level1_id, :level2_id, :level3_id, :amount, :comments, :image, :number_of_people, :people_names)
     end
 end
