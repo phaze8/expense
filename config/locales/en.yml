@@ -31,3 +31,20 @@
 
 en:
   hello: "Hello world"
+
+cost:
+  attributes:
+    submitter:
+      blank: Your name cannot be blank
+    level1_id: 
+      blank: Coding must be filled in
+    level2_id:
+      blank: Coding must be filled in
+    level3_id:
+      blank: Coding must be filled in
+    amount:
+      blank: An amount must be given
+      too_short: Amount doesn't look valid
+      too_long:  Amount seems too long
+    expense_date:
+      blank: Must include expense date

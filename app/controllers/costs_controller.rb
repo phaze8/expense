@@ -39,15 +39,14 @@ class CostsController < ApplicationController
   # POST /costs.json
   def create
     @cost = Cost.new(cost_params)
-
-    cookies.permanent[:submitter] = cost_params[:submitter]
+    puts @cost.errors[:name]
     respond_to do |format|
       if @cost.save
 
         format.html { redirect_to new_cost_url, notice: 'Expense was successfully added.' }
         format.json { render :show, status: :created, location: @cost }
       else
-        format.html { render :new }
+        format.html { redirect_to new_cost_path }
         format.json { render json: @cost.errors, status: :unprocessable_entity }
       end
     end
@@ -85,6 +84,6 @@ class CostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cost_params
-      params.require(:cost).permit(:submitter, :expense_date, :level1_id, :level2_id, :level3_id, :amount, :comments, :image, :number_of_people, :people_names)
+      params.require(:cost).permit(:submitter, :expense_date, :level1_id, :level2_id, :level3_id, :amount, :comments, :image, :number_of_people, :people_names, :onsite)
     end
 end
