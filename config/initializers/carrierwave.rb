@@ -1,12 +1,14 @@
-CarrierWave.configure do |config|
-	config.fog_credentials = {
-		provider: 				'AWS',
-		aws_access_key_id: 		ENV['AWS_ACCESS_KEY_ID'],
-		aws_secret_access_key: 	ENV['AWS_SECRET_ACCESS_KEY'],
-		region:   				'us-west-2'
+# CarrierWave.configure do |config|
+# 	config.fog_credentials = {
+# 		provider: 				'AWS',
+# 		aws_access_key_id: 		ENV['AWS_ACCESS_KEY_ID'],
+# 		aws_secret_access_key: 	ENV['AWS_SECRET_ACCESS_KEY'],
+# 		region:   				'us-west-2'
 
-	}
+# 	}
 
-	config.cache_dir		= "#{Rails.root}/temp/uploads"
-	config.fog_directory	= ENV['S3_BUCKET']
-end
+# 	config.cache_dir		= "#{Rails.root}/temp/uploads"
+# 	config.fog_directory	= ENV['S3_BUCKET']
+# end
+
+require 'carrierwave/orm/activerecord'
