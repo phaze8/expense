@@ -74,3 +74,4 @@ gem 'omniauth-oauth2'
 
 gem 'omniauth-microsoft_v2_auth', path: './omniauth-microsoft_v2_auth'
 
+ruby "2.4.1"
