@@ -132,7 +132,6 @@ GEM
       omniauth (~> 1.2)
     pg (0.20.0)
     public_suffix (2.0.5)
-    puma (3.8.2)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -230,7 +229,6 @@ DEPENDENCIES
   omniauth-microsoft_v2_auth!
   omniauth-oauth2
   pg
-  puma (~> 3.7)
   rails (~> 5.1.0)
   sass-rails (~> 5.0)
   selenium-webdriver
