@@ -46,7 +46,11 @@ class CostsController < ApplicationController
         format.html { redirect_to new_cost_url, notice: 'Expense was successfully added.' }
         format.json { render :show, status: :created, location: @cost }
       else
-        format.html { redirect_to new_cost_path }
+        notice = 'Error: '
+        @cost.errors.full_messages.each do |message| 
+          notice = notice + message + " "
+        end
+        format.html { redirect_to :back, notice: notice }
         format.json { render json: @cost.errors, status: :unprocessable_entity }
       end
     end

@@ -27,9 +27,9 @@ gem 'font-awesome-rails'
 # For Picture upload
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'figaro'
-gem 'fog'
-gem 'aws-sdk-v1'
+#gem 'figaro'
+#gem 'fog'
+#gem 'aws-sdk-v1'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
