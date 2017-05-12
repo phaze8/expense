@@ -85,4 +85,5 @@ production:
   #password: <%= ENV['RDS_DB_PASSWORD'] %>
   #host:     <%= ENV['RDS_HOSTNAME'] %>
   #port:     <%= ENV['RDS_PORT'] %>
-  database: expense_production
+  url: <%= ENV['DATABASE_URL'] %>
+
