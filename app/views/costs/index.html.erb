@@ -1,6 +1,8 @@
-<p id="notice"><%= notice %></p>
-<div class="container">
-	<h1>Expenses</h1>
 
+<div class="container">
+	<p id="notice"><%= notice %></p>
+	<div class="flex"><h1>Expenses</h1>
+	<%= link_to 'Add Expense', new_cost_path,  :class => "waves-effect waves-light btn" %>
+	</div>
 	<%= render 'list', flag: 1 %>
 </div>

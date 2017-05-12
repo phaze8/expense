@@ -14,10 +14,16 @@ class CostsController < ApplicationController
 
   # GET /costs/new
   def new
-    @cost = Cost.new
-    @cost.submitter = cookies[:submitter]
-    @cost.level1_id = Level1.where('name = ?', "G&A").first.id
-    @cost.level2_id = Level2.where('name = ?', "Expense").first.id
+    if session[:cost]
+      @cost = Cost.new(session[:cost])
+      session[:cost] = nil
+      @cost.valid?
+    else
+      @cost = Cost.new
+      @cost.submitter = cookies[:submitter]
+      @cost.level1_id = Level1.where('name = ?', "G&A").first.id
+      @cost.level2_id = Level2.where('name = ?', "Expense").first.id
+    end
     @level1s = Level1.all.order(:name)
     @level2s = Level2.all.order(:name)
     @level3s = Level3.all.order(:name)
@@ -46,11 +52,8 @@ class CostsController < ApplicationController
         format.html { redirect_to new_cost_url, notice: 'Expense was successfully added.' }
         format.json { render :show, status: :created, location: @cost }
       else
-        notice = 'Error: '
-        @cost.errors.full_messages.each do |message| 
-          notice = notice + message + " "
-        end
-        format.html { redirect_to :back, notice: notice }
+        session[:cost] = cost_params
+        format.html { redirect_to new_cost_url }
         format.json { render json: @cost.errors, status: :unprocessable_entity }
       end
     end
@@ -64,7 +67,7 @@ class CostsController < ApplicationController
         format.html { redirect_to @cost, notice: 'Cost was successfully updated.' }
         format.json { render :show, status: :ok, location: @cost }
       else
-        format.html { render :edit }
+        format.html { render  :edit }
         format.json { render json: @cost.errors, status: :unprocessable_entity }
       end
     end
@@ -75,7 +78,7 @@ class CostsController < ApplicationController
   def destroy
     @cost.destroy
     respond_to do |format|
-      format.html { direct_to new_cost_url, notice: 'Cost was successfully destroyed.' }
+      format.html { redirect_to costs_url, notice: 'Cost was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

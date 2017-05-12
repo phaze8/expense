@@ -20,8 +20,8 @@
       <i class="large material-icons">menu</i>
     </a>
     <ul>
-      <li><a class="btn-floating teal lighten-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Comming Soon">
-      	<%= fa_icon "search" %></a>
+      <li>
+        <%= link_to fa_icon("search"), costs_path, :class => "btn-floating cyan lighten-1 tooltipped", :'data-position' => "left", :'data-delay' => "50",  :'data-tooltip' => "View All Expenses" %>
       </li>
       <li><a class="btn-floating grey lighten-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Coming Soon">
       	<%= fa_icon "pie-chart" %></a>

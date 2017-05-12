@@ -11,3 +11,29 @@
 		color: $vDarkBlue;
 	}
 }
+
+button.sort {
+	background-color: transparent;
+	border: none;
+}
+i.fa.fa-sort {
+	color: $vLightBlue;
+	padding-left: 10px;
+}
+
+.pagination li {
+  display:inline-block;
+  padding:5px;
+}
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+div#error_explanation {
+    color:  #ec407a;
+    h2 {
+    	font-size: 16px;
+    }
+}

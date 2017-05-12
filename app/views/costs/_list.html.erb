@@ -1,33 +1,35 @@
+<div id="costList">
+<input class="search" placeholder="Search Expenses...">
 <table class="striped responsive-table">
   <thead>
     <tr>
       <% if flag == 1 %>
-        <th>Submitter</th> 
+        <th><%= button_tag  class: "sort", data: {sort: "submitter"} do %>Submitter<%= fa_icon("sort") %><% end %></th> 
       <% end %>
       <th>Expense date</th>
-      <th class="hide-on-small-and-down">Level1</th>
-      <th class="hide-on-small-and-down">Level2</th>
-      <th class="hide-on-small-and-down">Level3</th>
-      <th>Amount</th>
+      <th class="hide-on-small-and-down"><%= button_tag  class: "sort", data: {sort: "level1"} do %>Level 1<%= fa_icon("sort") %><% end %></th>
+      <th class="hide-on-small-and-down"><%= button_tag  class: "sort", data: {sort: "level2"} do %>Level 2<%= fa_icon("sort") %><% end %></th>
+      <th class="hide-on-small-and-down"><%= button_tag  class: "sort", data: {sort: "level3"} do %>Level 3<%= fa_icon("sort") %><% end %></th>
+      <th><%= button_tag  class: "sort", data: {sort: "amount"} do %>Amount<%= fa_icon("sort") %><% end %></th>
       <th class="hide-on-small-and-down">Receipt</th>
       <th>Comments</th>
       <th colspan="2"></th>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="list">
     <% @costs.each do |cost| %>
       <tr>
         <% if flag == 1 %>
-          <td><%= cost.submitter %></td> 
+          <td class="submitter"><%=  cost.submitter %></td> 
         <% end %>
-        <td><%= cost.expense_date %></td>
-        <td class="hide-on-small-and-down"><%= cost.level1.name %></td>
-        <td class="hide-on-small-and-down"><%= cost.level2.name %></td>
-        <td class="hide-on-small-and-down"><%= cost.level3.name %></td>
-        <td><%= number_to_currency(cost.amount, precision: 2) %></td>
-        <td class="hide-on-small-and-down"><%= image_tag cost.image_url(:thumb) if cost.image? %></td>
-        <td><%= cost.comments %></td>
+        <td class="expense-date"><%= cost.expense_date %></td>
+        <td class="hide-on-small-and-down level1"><%= cost.level1.name %></td>
+        <td class="hide-on-small-and-down level2"><%= cost.level2.name %></td>
+        <td class="hide-on-small-and-down level3"><%= cost.level3.name %></td>
+        <td class="amount"><%= number_to_currency(cost.amount, precision: 2) %></td>
+        <td class="hide-on-small-and-down image"><%= image_tag cost.image_url(:thumb) if cost.image? %></td>
+        <td class="comments"><%= cost.comments %></td>
         <td>
           <%= link_to fa_icon("pencil-square-o"), edit_cost_path(cost)  %>
         </td>
@@ -38,3 +40,5 @@
     <% end %>
   </tbody>
 </table>
+<ul class="pagination"></ul>
+</div>

@@ -33,5 +33,10 @@ header {
 .vDarkBlue-bg {
 	background-color: $vDarkBlue;
 }
+#notice {
+	background-color: #e1f5fe;
+	color: #01579b;
+
+}
 @import "home.scss";
 @import "costs.scss";

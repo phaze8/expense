@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require materialize
 //= require materialize2
+//= require list
 //= require_tree .
 
 var m_and_e = 0;
@@ -42,4 +43,14 @@ $(document).on('ready page:change', function(){
 			node.addClass('hide');
 		}
 	});
+	//For list js
+	var options = {
+	  valueNames: [ 'submitter', 'expense-date', 'level1', 'level2', 'level3', 'amount', 'comments' ]
+	};
+
+	var userList = new List('costList', options);
+
+	//hides notice after 5 seconds
+	setTimeout(function(){ $('#notice').text(''); }, 5000);
+
 });
